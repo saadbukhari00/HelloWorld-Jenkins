@@ -7,6 +7,9 @@ pipeline {
             }
         }
         stage('Test') {
+            when {
+                branch 'main'
+            }
             steps {
                 echo 'Testing..'
             }
@@ -15,17 +18,6 @@ pipeline {
             steps {
                 echo 'Deploying....'
             }
-        }
-    }
-    post {
-        always {
-            echo 'This will always run'
-        }
-        success {
-            echo 'This will run only if successful'
-        }
-        failure {
-            echo 'This will run only if failed'
         }
     }
 }
